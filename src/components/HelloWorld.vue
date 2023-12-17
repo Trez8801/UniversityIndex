@@ -32,7 +32,6 @@ h1 {
   font-size: 2.6rem;
   font-family: "Merriweather";
   font-weight: normal;
-  position: relative;
   top: -10px;
 }
 
@@ -44,12 +43,7 @@ h3 {
 .greetings h1,
 .greetings h3 {
   text-align: center;
+  place-content: center;
 }
 
-@media (min-width: 1024px) {
-  .greetings h1,
-  .greetings h3 {
-    text-align: left;
-  }
-}
 </style>

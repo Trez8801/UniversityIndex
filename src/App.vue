@@ -5,9 +5,11 @@ import HelloWorld from "@/components/HelloWorld.vue";
 
 <template>
   <header>
-    <img alt="university" class="logo" src="./assets/ecuLogo.svg" width="125" height="125" />
+    <div class="logo">
+    <img alt="university" src="./assets/ecuLogo.svg" width="125" height="125" />
+    </div>
     <div class="wrapper">
-      <HelloWorld msg="Global Campus Connect: The Worldwide University Locator"/>
+      <HelloWorld msg='Global Campus Connect: The Worldwide University Locator'/>
     </div>
   </header>
 
@@ -18,29 +20,20 @@ import HelloWorld from "@/components/HelloWorld.vue";
 
 <style scoped>
 header {
+  display: block;
   line-height: 1.5;
 }
 
 .logo {
-  display: block;
+  display: flex;
   margin: 0 auto 2rem;
+  place-content: center;
 }
 
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: normal;
-    //padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
+.wrapper {
+  display: flex;
+  margin: 0 auto 2rem;
+  place-content: center;
 }
+
 </style>

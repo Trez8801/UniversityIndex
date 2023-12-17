@@ -41,8 +41,8 @@ export default {
   </head>
 
   <body>
-    <div id="vue-app">
-      <form name="appForm">
+    <div id="vue-app" class="form">
+      <form>
         <table>
           <colgroup>
             <col width="20%">
@@ -58,7 +58,7 @@ export default {
             </td>
           </tr>
           <tr>
-            <td class="color">Select a university:</td>
+            <td class="color" id="label">Select a university:</td>
             <td>
               <VueSelect class="select"
                          v-model="universitySelected"
@@ -67,7 +67,7 @@ export default {
             </td>
           </tr>
           <tr>
-            <td class="color">Domains: </td>
+            <td class="color" id="label">Domains: </td>
             <td v-if="universitySelected != null">
               <span class="domains" v-for="domain in universitySelected.domains">{{domain}}<br></span>
             </td>
@@ -94,5 +94,9 @@ export default {
 
 .domains {
   color: black;
+}
+
+.form {
+  display: inline-block;
 }
 </style>
