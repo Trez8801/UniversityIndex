@@ -79,6 +79,10 @@ export default {
                 <a :href="webpage" target="_blank">{{webpage}}<br></a>
               </span>
             </td>
+            <div v-if="universitySelected == 'East Carolina University'" class="ecu">
+              <span class="color2">Go Pirates!</span>
+              <img alt="peedee" src="./assets/peedee.png" width="125" height="125"/>
+            </div>
           </tr>
         </table>
       </form>
