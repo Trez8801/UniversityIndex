@@ -16,7 +16,8 @@ export default {
       countries: countryList,
       countrySelected: "",
       universities: [],
-      universitySelected: null
+      universitySelected: null,
+      universityName: ""
     };
   },
   methods: {
@@ -26,6 +27,10 @@ export default {
       matches.sort((lhs, rhs) => lhs.name < rhs.name ? -1 : 1);
       console.log(matches);
       this.universities = matches;
+    },
+    confirmUni: function () {
+      console.log("Selected University: " + this.universitySelected.name);
+      this.universityName = this.universitySelected.name;
     }
   },
   components: {
@@ -54,7 +59,7 @@ export default {
               <VueSelect class="select"
                          v-model="countrySelected"
                          :options="countries"
-                        @update:modelValue="fetchUniversities(); universitySelected=null"/>
+                        @update:modelValue="fetchUniversities(); universitySelected = null"/>
             </td>
           </tr>
           <tr>
@@ -63,13 +68,17 @@ export default {
               <VueSelect class="select"
                          v-model="universitySelected"
                          :options="universities"
-                         :label="'name'"/>
+                         :label="'name'"
+                          @update:modelValue="confirmUni();"/>
+            </td>
+            <td id="pirate" class=color2 v-if="universityName == 'East Carolina University'">
+              Go Pirates!
             </td>
           </tr>
           <tr>
             <td class="color" id="label">Domains: </td>
             <td v-if="universitySelected != null">
-              <span class="domains" v-for="domain in universitySelected.domains">{{domain}}<br></span>
+              <span class="color2" v-for="domain in universitySelected.domains">{{domain}}<br></span>
             </td>
           </tr>
           <tr>
@@ -79,13 +88,6 @@ export default {
                 <a :href="webpage" target="_blank">{{webpage}}<br></a>
               </span>
             </td>
-
-            <!-- not working -->
-            <div v-if="universitySelected == 'East Carolina University'" class="ecu">
-              <span class="color2">Go Pirates!</span>
-              <img alt="peedee" src="./assets/peedee.png" width="125" height="125"/>
-            </div>
-
           </tr>
         </table>
       </form>
@@ -94,6 +96,19 @@ export default {
 </template>
 
 <style scoped>
+table {
+  table-layout: fixed;
+  width: 650px;
+}
+
+#pirate {
+  font-family: Merriweather;
+  font-size: 12px;
+}
+
+.color2 {
+  color: hsl(56, 68%, 43%);
+}
 .select {
   color: black;
   flex-grow: inherit;
